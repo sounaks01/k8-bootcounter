@@ -4,11 +4,13 @@ metadata:
   name: bootcounter
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+  namespace: {kube.namespace}
 spec:
   rules:
-  - http:
+  - host: boot.{k8address}.nip.io
+    http:
       paths:
-      - path: /counter
+      - path: /
         backend:
           serviceName: bootcounter
           servicePort: 7070
