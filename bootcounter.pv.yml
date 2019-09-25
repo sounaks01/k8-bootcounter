@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv.bootcounter
+  namespace: ${kube.namespace}
+  labels:
+    counterPVName: pv.bootcounter
+spec:
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: bootcounter
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/var/data"

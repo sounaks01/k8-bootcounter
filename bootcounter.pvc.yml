@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  annotations:
+  labels:
+    app: counter
+    name: bootcounter-claim
+  name: bootcounter-claim
+  namespace: ${kube.namespace}
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: bootcounter
+  resources:
+    requests:
+      storage: 100Mi
+  selector:
+    matchLabels:
+      counterPVName: pv.bootcounter

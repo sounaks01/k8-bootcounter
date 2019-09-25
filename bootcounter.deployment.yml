@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: bootcounter
+  namespace: ${kube.namespace}
+spec:
+  replicas: 1  
+    spec:
+      volumes:
+        - name: bootcounter-pv-storage
+          persistentVolumeClaim:
+           claimName: bootcounter-data-claim
+      containers:
+      - name: amq
+        image: "{{registry.host}}/{{image.name.axa-amq}}{{image.tag.axa-amq}}"
+        env:
+        - name: counter_file_location
+          value: /var/data/counter.txt   
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+          - mountPath: /var/data/
+            name: bootcounter-pv-storage
+        resources:
+          requests:
+            cpu: "1"
+            memory: "256Mi"
+          limits:
+            cpu: "1"
+            memory: "512Mi"
