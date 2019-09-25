@@ -1,5 +1,5 @@
 # k8-bootcounter
-This is a small springboot micro service application. This application storing login counter in a file. So after restart pod or application crash data will be persist.
+This is a small springboot micro service application. This application is storing login counter in a file. So after restart pod or application crash data will be persist.
 
 Pre-requisite
 
@@ -20,4 +20,5 @@ Defaut persistence data is storing by-default in /var/data location as hostpath.
     path: "/var/data"
     server: <NFS_HOST_IP_ADDRESS>
 
-Image location is public docker hub and url is sounak01/bootcounter:01.
+Image location is public docker hub and url is sounak01/bootcounter:01. 
+Contact me @sounak.saha86@gmail.com
